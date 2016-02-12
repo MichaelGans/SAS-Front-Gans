@@ -1,0 +1,138 @@
+{{#if  isStudentFormEditing }}
+    <div class="row">
+        <div class="large-12 columns">
+            <br>
+            <hr/>
+            <h3 align="center">Modify Student Data</h3>
+            <form>
+                <div class="row">
+                    <div class="large-12 columns">
+                        <div class="row">
+                            <div class="large-3 columns">
+                                <label class="right">Student Number</label>
+                            </div>
+                            <div class="large-9 columns" class="left">
+                              {{input value=studentModel.number type="text" placeholder="enter student number" }}
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="large-3 columns">
+                                <label class="right">First Name</label>
+                            </div>
+                            <div class="large-9 columns" class="left">
+                              {{input value=studentModel.firstName type="text" placeholder="enter first name" }}
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="large-3 columns">
+                                <label class="right">Last Name</label>
+                            </div>
+                            <div class="large-9 columns" class="left">
+                              {{input value=studentModel.lastName type="text" placeholder="enter last name"}}
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="large-3 columns">
+                                <label class="right">Date of Birth</label>
+                            </div>
+                            <div class="large-9 columns" class="left">
+                              {{input value=studentModel.DOB type="date" placeholder="Date of Birth"}}
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="large-3 columns">
+                                <label class="right">Residency</label>
+                            </div>
+                            <div class="large-9 columns" class="left">
+                              <select onchange={{action (mut selectedResidency) value="studentModel.resInfo"}}>
+                                {{#each residencyModel as |residencyChoice|}}
+                                    <option value={{residencyChoice.id}} selected={{eq selectedResidency residencyChoice}}>{{residencyChoice.name}}</option>
+                                {{/each}}
+                              </select>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="large-3 columns">
+                                <label class="right">Gender</label>
+                            </div>
+                            <div class="large-9 columns" class="left">
+                              <select onchange={{action (mut selectedGender) value="studentModel.gender"}}>
+                                {{#each genderModel as |genderChoice|}}
+                                    <option value={{genderChoice.id}} selected={{eq selectedGender genderChoice}}>{{genderChoice.name}}</option>
+                                {{/each}}
+                              </select>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="large-3 columns">
+                                <label class="right">Country</label>
+                            </div>
+                            <div class="large-9 columns" class="left">
+                              <select onchange={{action (mut selectedCountry) value="studentModel.country"}}>
+                                {{#each countryModel as |counrtyChoice|}}
+                                    <option value={{countryChoice.id}} selected={{eq selectedCountry countryChoice}}>{{countryChoice.name}}</option>
+                                {{/each}}
+                              </select>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="large-3 columns">
+                                <label class="right">Province</label>
+                            </div>
+                            <div class="large-9 columns" class="left">
+                                <select onchange={{action (mut selectedProvince) value="target.value"}}>
+                                  {{#each provinceModel as |provinceChoice|}}
+                                      <option value={{provinceChoice.id}} selected={{eq selectedProvince provinceChoice}}>{{provinceChoice.name}}</option>
+                                  {{/each}}
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="large-3 columns">
+                                <label class="right">City</label>
+                            </div>
+                            <div class="large-9 columns" class="left">
+                                <select onchange={{action (mut selectedCity) value="target.value"}}>
+                                  {{#each cityModel as |cityChoice|}}
+                                      <option value={{cityChoice.id}} selected={{eq selectedCity cityChoice}}>{{cityChoice.name}}</option>
+                                  {{/each}}
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="large-3 columns">
+                                <label class="right">Academic Load</label>
+                            </div>
+                            <div class="large-9 columns" class="left">
+                                <select onchange={{action (mut selectedAcademicload) value="target.value"}}>
+                                  {{#each academicloadModel as |academicloadChoice|}}
+                                      <option value={{academicloadChoice.id}} selected={{eq selectedAcademicload academicloadChoice}}>{{academicloadChoice.name}}</option>
+                                  {{/each}}
+                                </select>
+                            </div>
+                        </div>
+
+
+</div>
+</div>
+</form>
+<br>
+<a href="#" class="button radius" {{action 'saveStudent'}}>Save</a>
+<a href="#" class="button radius" {{action 'cancel'}}>Cancel</a>
+</div>
+</div>
+{{else}}
+
+<div class="large-1 columns">
+<a href="#" class="button success tiny"  {{action 'editStudent'}}>Edit</a>
+</div>
+
+{{/if}}
+
+

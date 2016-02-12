@@ -1,0 +1,57 @@
+{{#if isManagingGender}}
+    <div class="row">
+        <div class="large-12 columns">
+            <h4 align="center"> Manage Gender</h4>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="large-10  large-centered columns">
+            <div class="panel">
+              {{#if isAddingNewGender}}
+                  <h2>Add new gender</h2>
+                  <form>
+                      <div class="row">
+                          <div class="large-12 columns">
+                              <label>Name
+                                {{input value=name  type="text" }}
+                              </label>
+                          </div>
+                      </div>
+                  </form>
+                  <div class="row">
+                      <div class="large-12 columns">
+                          <a href="#" class="button radius" {{action 'saveNewGender'}}>Save</a>
+                          <a href="#" class="button radius" {{action 'cancelAddNewGender'}}>Cancel</a>
+                      </div>
+                  </div>
+                  <br>
+              {{else}}
+                {{#each genderModel as |oneGender|}}
+                    <div class="row">
+                        <li class="large-3 columns">  {{oneGender.name}} </li>
+
+                        <div class="large-2 columns">
+                          {{delete-gender ID=oneGender.id }}
+                        </div>
+                    </div>
+                {{/each}}
+                  <div class="row">
+                      <div class="large-12 columns">
+                          <br> <br> <br>
+                          <a href="#" class="button radius" {{action 'addNewGender'}}>Add new gender</a>
+                          <a href="#" class="button radius" {{action 'doneGender'}}>Done</a>
+                      </div>
+                  </div>
+              {{/if}}
+            </div>
+        </div>
+    </div>
+
+{{else}}
+    <div class="large-2 columns">
+        <a href="#" class="button tiny" {{action 'manageGender' }}>More</a>
+    </div>
+{{/if}}
+
+

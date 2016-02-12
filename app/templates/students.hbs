@@ -1,0 +1,20 @@
+<br><br>
+<br><br>
+<ul class="circle">
+    <ul>
+      {{#each model as |oneStudent|}}
+          <div class="row">
+            {{edit-student ID=oneStudent.id}}
+            <div class="large-3 columns">
+                {{oneStudent.number}} {{oneStudent.firstName}} {{oneStudent.lastName}}
+          </div>
+            <div class="large-2 columns">
+                {{delete-student ID=oneStudent.id}}
+            </div>
+          </div>
+      {{/each}}
+    </ul>
+</ul>
+<br>
+{{add-new-student}}
+

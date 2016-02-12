@@ -1,0 +1,157 @@
+{{#if  isStudentFormEditing }}
+    <div class="row">
+        <div class="large-12 columns">
+            <br>
+            <hr/>
+            <h3 align="center">Create New Student</h3>
+            <form>
+                <div class="row">
+                    <div class="large-12 columns">
+                        <div class="row">
+                            <div class="large-3 columns">
+                                <label class="right">Student Number</label>
+                            </div>
+                            <div class="large-9 columns" class="left">
+                              {{input value=number type="text" placeholder="enter student number" }}
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="large-3 columns">
+                                <label class="right">First Name</label>
+                            </div>
+                            <div class="large-9 columns" class="left">
+                              {{input value=firstName type="text" placeholder="enter first name" }}
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="large-3 columns">
+                                <label class="right">Last Name</label>
+                            </div>
+                            <div class="large-9 columns" class="left">
+                              {{input value=lastName type="text" placeholder="enter last name"}}
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="large-3 columns">
+                                <label class="right">Date of Birth</label>
+                            </div>
+                            <div class="large-9 columns" class="left">
+                              {{input value=DOB type="date" placeholder="Date of Birth"}}
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="large-3 columns">
+                                <label class="right">Residency</label>
+                            </div>
+                            <div class="large-7 columns" class="left">
+                                <select onchange={{action (mut selectedResidency) value="target.value"}}>
+                                  {{!--   <select onchange={{action 'selectResidency' value="target.value"}} > --}}
+                                  {{#each residencyModel as |residencyChoice|}}
+                                      <option value={{residencyChoice.id}} selected={{eq selectedResidency residencyChoice}}>{{residencyChoice.name}}</option>
+                                  {{/each}}
+                                </select>
+                            </div>
+
+                          {{manage-residency}}
+
+                        </div>
+
+                        <div class="row">
+                            <div class="large-3 columns">
+                                <label class="right">Gender</label>
+                            </div>
+                            <div class="large-7 columns" class="left">
+                                <select onchange={{action (mut selectedGender) value="target.value"}}>
+                                  {{#each genderModel as |genderChoice|}}
+                                      <option value={{genderChoice.id}} selected={{eq selectedGender genderChoice}}>{{genderChoice.name}}</option>
+                                  {{/each}}
+                                </select>
+                            </div>
+
+                            {{manage-gender}}
+
+                        </div>
+
+                        <div class="row">
+                            <div class="large-3 columns">
+                                <label class="right">Country</label>
+                            </div>
+                            <div class="large-7 columns" class="left">
+                                <select onchange={{action (mut selectedCountry) value="target.value"}}>
+                                  {{#each countryModel as |countryChoice|}}
+                                      <option value={{countryChoice.id}} selected={{eq selectedCountry countryChoice}}>{{countryChoice.name}}</option>
+                                  {{/each}}
+                                </select>
+                            </div>
+
+                            {{manage-country}}
+
+                        </div>
+
+                        <div class="row">
+                            <div class="large-3 columns">
+                                <label class="right">Province</label>
+                            </div>
+                            <div class="large-7 columns" class="left">
+                                <select onchange={{action (mut selectedProvince) value="target.value"}}>
+                                  {{#each provinceModel as |provinceChoice|}}
+                                      <option value={{provinceChoice.id}} selected={{eq selectedProvince provinceChoice}}>{{provinceChoice.name}}</option>
+                                  {{/each}}
+                                </select>
+                            </div>
+
+                            {{manage-province}}
+
+                        </div>
+
+                        <div class="row">
+                            <div class="large-3 columns">
+                                <label class="right">City</label>
+                            </div>
+                            <div class="large-7 columns" class="left">
+                                <select onchange={{action (mut selectedCity) value="target.value"}}>
+                                  {{#each cityModel as |cityChoice|}}
+                                      <option value={{cityChoice.id}} selected={{eq selectedCity cityChoice}}>{{cityChoice.name}}</option>
+                                  {{/each}}
+                                </select>
+                            </div>
+
+                            {{manage-city}}
+
+                        </div>
+
+                        <div class="row">
+                            <div class="large-3 columns">
+                                <label class="right">Academic Load</label>
+                            </div>
+                            <div class="large-7 columns" class="left">
+                                <select onchange={{action (mut selectedAcademicload) value="target.value"}}>
+                                  {{#each academicloadModel as |academicloadChoice|}}
+                                      <option value={{academicloadChoice.id}} selected={{eq selectedAcademicload academicloadChoice}}>{{academicloadChoice.name}}</option>
+                                  {{/each}}
+                                </select>
+                            </div>
+
+                            {{manage-academicload}}
+
+                        </div>
+
+
+                    </div>
+                </div>
+            </form>
+            <br>
+            <a href="#" class="button radius" {{action 'saveStudent'}}>Save</a>
+            <a href="#" class="button radius" {{action 'cancel'}}>Cancel</a>
+        </div>
+    </div>
+{{else}}
+    <div class="row">
+        <div class="large-12 columns">
+            <br>
+            <a href="#" class="button round" {{action 'addNewStudent'}}>Add New Student</a>
+        </div>
+    </div>
+{{/if}}
+
